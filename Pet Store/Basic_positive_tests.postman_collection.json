@@ -1,0 +1,961 @@
+{
+	"info": {
+		"_postman_id": "ba58f48c-fc1b-410f-b88c-f7b00e92c76f",
+		"name": "Basic positive tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26481818"
+	},
+	"item": [
+		{
+			"name": "Validate status code",
+			"item": [
+				{
+					"name": "Find pet by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_URL}}/2",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find pets by status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function() {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_URL}}/findByStatus?status=pending",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"findByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "pending"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new pet to the store",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Base_URL}}",
+							"host": [
+								"{{Base_URL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload an image",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Base_URL}}/3/uploadImage",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"3",
+								"uploadImage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an existing pet",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}",
+							"host": [
+								"{{Base_URL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update pet with form data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}",
+							"host": [
+								"{{Base_URL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a pet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "123",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "API_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Base_URL}}/4",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Validate payload",
+			"item": [
+				{
+					"name": "Find pet by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const schema = {\r",
+									"    \"$schema\": \"https://json-schema.org/draft/2019-09/schema\",\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"default\": {},\r",
+									"    \"title\": \"Root Schema\",\r",
+									"    \"required\": [\r",
+									"        \"id\",\r",
+									"        \"category\",\r",
+									"        \"name\",\r",
+									"        \"photoUrls\",\r",
+									"        \"tags\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"id\": {\r",
+									"            \"type\": \"integer\",\r",
+									"            \"default\": 0,\r",
+									"            \"title\": \"The id Schema\",\r",
+									"            \"examples\": [\r",
+									"                0\r",
+									"            ]\r",
+									"        },\r",
+									"        \"category\": {\r",
+									"            \"type\": \"object\",\r",
+									"            \"default\": {},\r",
+									"            \"title\": \"The category Schema\",\r",
+									"            \"required\": [\r",
+									"                \"id\",\r",
+									"                \"name\"\r",
+									"            ],\r",
+									"            \"properties\": {\r",
+									"                \"id\": {\r",
+									"                    \"type\": \"integer\",\r",
+									"                    \"default\": 0,\r",
+									"                    \"title\": \"The id Schema\",\r",
+									"                    \"examples\": [\r",
+									"                        0\r",
+									"                    ]\r",
+									"                },\r",
+									"                \"name\": {\r",
+									"                    \"type\": \"string\",\r",
+									"                    \"default\": \"\",\r",
+									"                    \"title\": \"The name Schema\",\r",
+									"                    \"examples\": [\r",
+									"                        \"string\"\r",
+									"                    ]\r",
+									"                }\r",
+									"            },\r",
+									"            \"examples\": [{\r",
+									"                \"id\": 0,\r",
+									"                \"name\": \"string\"\r",
+									"            }]\r",
+									"        },\r",
+									"        \"name\": {\r",
+									"            \"type\": \"string\",\r",
+									"            \"default\": \"\",\r",
+									"            \"title\": \"The name Schema\",\r",
+									"            \"examples\": [\r",
+									"                \"doggie\"\r",
+									"            ]\r",
+									"        },\r",
+									"        \"photoUrls\": {\r",
+									"            \"type\": \"array\",\r",
+									"            \"default\": [],\r",
+									"            \"title\": \"The photoUrls Schema\",\r",
+									"            \"items\": {\r",
+									"                \"type\": \"string\",\r",
+									"                \"default\": \"\",\r",
+									"                \"title\": \"A Schema\",\r",
+									"                \"examples\": [\r",
+									"                    \"string\"\r",
+									"                ]\r",
+									"            },\r",
+									"            \"examples\": [\r",
+									"                [\r",
+									"                    \"string\"]\r",
+									"            ]\r",
+									"        },\r",
+									"        \"tags\": {\r",
+									"            \"type\": \"array\",\r",
+									"            \"default\": [],\r",
+									"            \"title\": \"The tags Schema\",\r",
+									"            \"items\": {\r",
+									"                \"type\": \"object\",\r",
+									"                \"default\": {},\r",
+									"                \"title\": \"A Schema\",\r",
+									"                \"required\": [\r",
+									"                    \"id\",\r",
+									"                    \"name\"\r",
+									"                ],\r",
+									"                \"properties\": {\r",
+									"                    \"id\": {\r",
+									"                        \"type\": \"integer\",\r",
+									"                        \"default\": 0,\r",
+									"                        \"title\": \"The id Schema\",\r",
+									"                        \"examples\": [\r",
+									"                            0\r",
+									"                        ]\r",
+									"                    },\r",
+									"                    \"name\": {\r",
+									"                        \"type\": \"string\",\r",
+									"                        \"default\": \"\",\r",
+									"                        \"title\": \"The name Schema\",\r",
+									"                        \"examples\": [\r",
+									"                            \"string\"\r",
+									"                        ]\r",
+									"                    }\r",
+									"                },\r",
+									"                \"examples\": [{\r",
+									"                    \"id\": 0,\r",
+									"                    \"name\": \"string\"\r",
+									"                }]\r",
+									"            },\r",
+									"            \"examples\": [\r",
+									"                [{\r",
+									"                    \"id\": 0,\r",
+									"                    \"name\": \"string\"\r",
+									"                }]\r",
+									"            ]\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"type\": \"string\",\r",
+									"            \"default\": \"\",\r",
+									"            \"title\": \"The status Schema\",\r",
+									"            \"examples\": [\r",
+									"                \"available\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"examples\": [{\r",
+									"        \"id\": 0,\r",
+									"        \"category\": {\r",
+									"            \"id\": 0,\r",
+									"            \"name\": \"string\"\r",
+									"        },\r",
+									"        \"name\": \"doggie\",\r",
+									"        \"photoUrls\": [\r",
+									"            \"string\"\r",
+									"        ],\r",
+									"        \"tags\": [{\r",
+									"            \"id\": 0,\r",
+									"            \"name\": \"string\"\r",
+									"        }],\r",
+									"        \"status\": \"available\"\r",
+									"    }]\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Validate JSON schema\", ()=> {\r",
+									"\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_URL}}/3",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find pets by status",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new pet to the store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const schema = {\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"default\": {},\r",
+									"    \"title\": \"Root Schema\",\r",
+									"    \"required\": [\r",
+									"        \"id\",\r",
+									"        \"category\",\r",
+									"        \"name\",\r",
+									"        \"photoUrls\",\r",
+									"        \"tags\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"id\": {\r",
+									"            \"type\": \"integer\",\r",
+									"            \"default\": 0,\r",
+									"            \"title\": \"The id Schema\",\r",
+									"            \"examples\": [\r",
+									"                100\r",
+									"            ]\r",
+									"        },\r",
+									"        \"category\": {\r",
+									"            \"type\": \"object\",\r",
+									"            \"default\": {},\r",
+									"            \"title\": \"The category Schema\",\r",
+									"            \"required\": [\r",
+									"                \"id\",\r",
+									"                \"name\"\r",
+									"            ],\r",
+									"            \"properties\": {\r",
+									"                \"id\": {\r",
+									"                    \"type\": \"integer\",\r",
+									"                    \"default\": 0,\r",
+									"                    \"title\": \"The id Schema\",\r",
+									"                    \"examples\": [\r",
+									"                        2\r",
+									"                    ]\r",
+									"                },\r",
+									"                \"name\": {\r",
+									"                    \"type\": \"string\",\r",
+									"                    \"default\": \"\",\r",
+									"                    \"title\": \"The name Schema\",\r",
+									"                    \"examples\": [\r",
+									"                        \"string\"\r",
+									"                    ]\r",
+									"                }\r",
+									"            },\r",
+									"            \"examples\": [{\r",
+									"                \"id\": 2,\r",
+									"                \"name\": \"string\"\r",
+									"            }]\r",
+									"        },\r",
+									"        \"name\": {\r",
+									"            \"type\": \"string\",\r",
+									"            \"default\": \"\",\r",
+									"            \"title\": \"The name Schema\",\r",
+									"            \"examples\": [\r",
+									"                \"Brutus\"\r",
+									"            ]\r",
+									"        },\r",
+									"        \"photoUrls\": {\r",
+									"            \"type\": \"array\",\r",
+									"            \"default\": [],\r",
+									"            \"title\": \"The photoUrls Schema\",\r",
+									"            \"items\": {},\r",
+									"            \"examples\": [\r",
+									"                []\r",
+									"            ]\r",
+									"        },\r",
+									"        \"tags\": {\r",
+									"            \"type\": \"array\",\r",
+									"            \"default\": [],\r",
+									"            \"title\": \"The tags Schema\",\r",
+									"            \"items\": {\r",
+									"                \"type\": \"object\",\r",
+									"                \"default\": {},\r",
+									"                \"title\": \"A Schema\",\r",
+									"                \"required\": [\r",
+									"                    \"id\",\r",
+									"                    \"name\"\r",
+									"                ],\r",
+									"                \"properties\": {\r",
+									"                    \"id\": {\r",
+									"                        \"type\": \"integer\",\r",
+									"                        \"default\": 0,\r",
+									"                        \"title\": \"The id Schema\",\r",
+									"                        \"examples\": [\r",
+									"                            10\r",
+									"                        ]\r",
+									"                    },\r",
+									"                    \"name\": {\r",
+									"                        \"type\": \"string\",\r",
+									"                        \"default\": \"\",\r",
+									"                        \"title\": \"The name Schema\",\r",
+									"                        \"examples\": [\r",
+									"                            \"string\"\r",
+									"                        ]\r",
+									"                    }\r",
+									"                },\r",
+									"                \"examples\": [{\r",
+									"                    \"id\": 10,\r",
+									"                    \"name\": \"string\"\r",
+									"                }]\r",
+									"            },\r",
+									"            \"examples\": [\r",
+									"                [{\r",
+									"                    \"id\": 10,\r",
+									"                    \"name\": \"string\"\r",
+									"                }]\r",
+									"            ]\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"type\": \"string\",\r",
+									"            \"default\": \"\",\r",
+									"            \"title\": \"The status Schema\",\r",
+									"            \"examples\": [\r",
+									"                \"pending\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"examples\": [{\r",
+									"        \"id\": 100,\r",
+									"        \"category\": {\r",
+									"            \"id\": 2,\r",
+									"            \"name\": \"string\"\r",
+									"        },\r",
+									"        \"name\": \"Brutus\",\r",
+									"        \"photoUrls\": [],\r",
+									"        \"tags\": [{\r",
+									"            \"id\": 10,\r",
+									"            \"name\": \"string\"\r",
+									"        }],\r",
+									"        \"status\": \"pending\"\r",
+									"    }]\r",
+									"};\r",
+									"\r",
+									"pm.test('Validate JSON schema', () => {\r",
+									"\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 35,\r\n    \r\n    \"category\": {\r\n        \"id\": 12,\r\n        \"name\": \"string\"\r\n    },\r\n\r\n    \"name\": \"Pojo\",\r\n    \"photoURLs\": [\r\n        \"string\"\r\n    ],\r\n\r\n    \"tags\": [\r\n        {\r\n            \"id\": 15,\r\n            \"name\": \"string\"\r\n        }\r\n    ],\r\n\r\n    \"status\": \"pending\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}",
+							"host": [
+								"{{Base_URL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload an image",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const schema = {\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"default\": {},\r",
+									"    \"title\": \"Root Schema\",\r",
+									"    \"required\": [\r",
+									"        \"code\",\r",
+									"        \"type\",\r",
+									"        \"message\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"code\": {\r",
+									"            \"type\": \"integer\",\r",
+									"            \"default\": 0,\r",
+									"            \"title\": \"The code Schema\",\r",
+									"            \"examples\": [\r",
+									"                200\r",
+									"            ]\r",
+									"        },\r",
+									"        \"type\": {\r",
+									"            \"type\": \"string\",\r",
+									"            \"default\": \"\",\r",
+									"            \"title\": \"The type Schema\",\r",
+									"            \"examples\": [\r",
+									"                \"unknown\"\r",
+									"            ]\r",
+									"        },\r",
+									"        \"message\": {\r",
+									"            \"type\": \"string\",\r",
+									"            \"default\": \"\",\r",
+									"            \"title\": \"The message Schema\",\r",
+									"            \"examples\": [\r",
+									"                \"additionalMetadata: myMetadata\\nFile uploaded to ./2.png, 13860 bytes\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"examples\": [{\r",
+									"        \"code\": 200,\r",
+									"        \"type\": \"unknown\",\r",
+									"        \"message\": \"additionalMetadata: myMetadata\\nFile uploaded to ./2.png, 13860 bytes\"\r",
+									"    }]\r",
+									"};\r",
+									"\r",
+									"pm.test('Validate JSON schema', () => {\r",
+									"\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "additionMetadata",
+									"value": "My pet image",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Projekty/Testowanie/Testy eksploracyjne/alechmura/2.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Base_URL}}/6/uploadImage",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"6",
+								"uploadImage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an existing pet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const schema = {\r",
+									"    \"$id\": \"http://example.com/example.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"default\": {},\r",
+									"    \"title\": \"Root Schema\",\r",
+									"    \"required\": [\r",
+									"        \"id\",\r",
+									"        \"category\",\r",
+									"        \"name\",\r",
+									"        \"photoUrls\",\r",
+									"        \"tags\",\r",
+									"        \"status\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"        \"id\": {\r",
+									"            \"type\": \"integer\",\r",
+									"            \"default\": 0,\r",
+									"            \"title\": \"The id Schema\",\r",
+									"            \"examples\": [\r",
+									"                0\r",
+									"            ]\r",
+									"        },\r",
+									"        \"category\": {\r",
+									"            \"type\": \"object\",\r",
+									"            \"default\": {},\r",
+									"            \"title\": \"The category Schema\",\r",
+									"            \"required\": [\r",
+									"                \"id\",\r",
+									"                \"name\"\r",
+									"            ],\r",
+									"            \"properties\": {\r",
+									"                \"id\": {\r",
+									"                    \"type\": \"integer\",\r",
+									"                    \"default\": 0,\r",
+									"                    \"title\": \"The id Schema\",\r",
+									"                    \"examples\": [\r",
+									"                        0\r",
+									"                    ]\r",
+									"                },\r",
+									"                \"name\": {\r",
+									"                    \"type\": \"string\",\r",
+									"                    \"default\": \"\",\r",
+									"                    \"title\": \"The name Schema\",\r",
+									"                    \"examples\": [\r",
+									"                        \"string\"\r",
+									"                    ]\r",
+									"                }\r",
+									"            },\r",
+									"            \"examples\": [{\r",
+									"                \"id\": 0,\r",
+									"                \"name\": \"string\"\r",
+									"            }]\r",
+									"        },\r",
+									"        \"name\": {\r",
+									"            \"type\": \"string\",\r",
+									"            \"default\": \"\",\r",
+									"            \"title\": \"The name Schema\",\r",
+									"            \"examples\": [\r",
+									"                \"doggie\"\r",
+									"            ]\r",
+									"        },\r",
+									"        \"photoUrls\": {\r",
+									"            \"type\": \"array\",\r",
+									"            \"default\": [],\r",
+									"            \"title\": \"The photoUrls Schema\",\r",
+									"            \"items\": {\r",
+									"                \"type\": \"string\",\r",
+									"                \"default\": \"\",\r",
+									"                \"title\": \"A Schema\",\r",
+									"                \"examples\": [\r",
+									"                    \"string\"\r",
+									"                ]\r",
+									"            },\r",
+									"            \"examples\": [\r",
+									"                [\r",
+									"                    \"string\"]\r",
+									"            ]\r",
+									"        },\r",
+									"        \"tags\": {\r",
+									"            \"type\": \"array\",\r",
+									"            \"default\": [],\r",
+									"            \"title\": \"The tags Schema\",\r",
+									"            \"items\": {\r",
+									"                \"type\": \"object\",\r",
+									"                \"default\": {},\r",
+									"                \"title\": \"A Schema\",\r",
+									"                \"required\": [\r",
+									"                    \"id\",\r",
+									"                    \"name\"\r",
+									"                ],\r",
+									"                \"properties\": {\r",
+									"                    \"id\": {\r",
+									"                        \"type\": \"integer\",\r",
+									"                        \"default\": 0,\r",
+									"                        \"title\": \"The id Schema\",\r",
+									"                        \"examples\": [\r",
+									"                            0\r",
+									"                        ]\r",
+									"                    },\r",
+									"                    \"name\": {\r",
+									"                        \"type\": \"string\",\r",
+									"                        \"default\": \"\",\r",
+									"                        \"title\": \"The name Schema\",\r",
+									"                        \"examples\": [\r",
+									"                            \"string\"\r",
+									"                        ]\r",
+									"                    }\r",
+									"                },\r",
+									"                \"examples\": [{\r",
+									"                    \"id\": 0,\r",
+									"                    \"name\": \"string\"\r",
+									"                }]\r",
+									"            },\r",
+									"            \"examples\": [\r",
+									"                [{\r",
+									"                    \"id\": 0,\r",
+									"                    \"name\": \"string\"\r",
+									"                }]\r",
+									"            ]\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"            \"type\": \"string\",\r",
+									"            \"default\": \"\",\r",
+									"            \"title\": \"The status Schema\",\r",
+									"            \"examples\": [\r",
+									"                \"available\"\r",
+									"            ]\r",
+									"        }\r",
+									"    },\r",
+									"    \"examples\": [{\r",
+									"        \"id\": 0,\r",
+									"        \"category\": {\r",
+									"            \"id\": 0,\r",
+									"            \"name\": \"string\"\r",
+									"        },\r",
+									"        \"name\": \"doggie\",\r",
+									"        \"photoUrls\": [\r",
+									"            \"string\"\r",
+									"        ],\r",
+									"        \"tags\": [{\r",
+									"            \"id\": 0,\r",
+									"            \"name\": \"string\"\r",
+									"        }],\r",
+									"        \"status\": \"available\"\r",
+									"    }]\r",
+									"};\r",
+									"\r",
+									"pm.test('Validate JSON schema', () => {\r",
+									"\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 5,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"{{$randomFullName}}\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}",
+							"host": [
+								"{{Base_URL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update pet with form data",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a pet",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "123",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "API_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Base_URL}}/7",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Validate headers",
+			"item": [
+				{
+					"name": "Find pet by ID",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Find pets by status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const headers = [\r",
+									"\r",
+									"    'Content-Type',\r",
+									"    'Connection',\r",
+									"    'Cache-Control',\r",
+									"    'Expires',\r",
+									"    'Content-Type',\r",
+									"    'X-Powered-By'\r",
+									"];\r",
+									"\r",
+									"for(let i = 0; i < headers.length; i++) {\r",
+									"\r",
+									"    pm.test(headers[i] + ' heder is present', () => {\r",
+									"\r",
+									"        pm.response.to.have.header(headers[i]);\r",
+									"    })\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_URL}}/findByStatus?status=available",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"findByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "available"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
