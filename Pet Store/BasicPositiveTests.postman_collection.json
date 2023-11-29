@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "ba58f48c-fc1b-410f-b88c-f7b00e92c76f",
+		"_postman_id": "47113b0b-be78-4767-a857-6df5f9e03991",
 		"name": "Basic positive tests",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "26481818"
 	},
 	"item": [
@@ -27,15 +27,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{Base_URL}}/2",
-							"host": [
-								"{{Base_URL}}"
-							],
-							"path": [
-								"2"
-							]
-						}
+						"url": "{{Base_URL}}/2"
 					},
 					"response": []
 				},
@@ -135,12 +127,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{Base_URL}}",
-							"host": [
-								"{{Base_URL}}"
-							]
-						}
+						"url": "{{Base_URL}}"
 					},
 					"response": []
 				},
@@ -188,16 +175,7 @@
 							"mode": "formdata",
 							"formdata": []
 						},
-						"url": {
-							"raw": "{{Base_URL}}/3/uploadImage",
-							"host": [
-								"{{Base_URL}}"
-							],
-							"path": [
-								"3",
-								"uploadImage"
-							]
-						}
+						"url": "{{Base_URL}}/3/uploadImage"
 					},
 					"response": []
 				},
@@ -255,12 +233,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{Base_URL}}",
-							"host": [
-								"{{Base_URL}}"
-							]
-						}
+						"url": "{{Base_URL}}"
 					},
 					"response": []
 				},
@@ -282,25 +255,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{Base_URL}}/{{newPetId}}",
-							"host": [
-								"{{Base_URL}}"
-							],
-							"path": [
-								"{{newPetId}}"
-							]
-						}
+						"url": "{{Base_URL}}/{{newPetId}}"
 					},
 					"response": []
 				},
@@ -322,15 +283,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{Base_URL}}/{{newPetId}}",
-							"host": [
-								"{{Base_URL}}"
-							],
-							"path": [
-								"{{newPetId}}"
-							]
-						}
+						"url": "{{Base_URL}}/{{newPetId}}"
 					},
 					"response": []
 				}
@@ -346,12 +299,9 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"const schema = pm.iterationData.get(\"findByIdSchema\").toObject();\r",
-									"\r",
-									"pm.test(\"Validate JSON schema\", ()=> {\r",
-									"\r",
-									"    pm.expect(pm.response).to.have.jsonSchema(schema.);\r",
-									"})"
+									"pm.test(\"Validate JSON schema\", () => {\r",
+									"    pm.expect(pm.response).to.have.jsonSchema(pm.iterationData.get(\"findByIdSchema\"));\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -360,15 +310,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{Base_URL}}/4",
-							"host": [
-								"{{Base_URL}}"
-							],
-							"path": [
-								"4"
-							]
-						}
+						"url": "{{Base_URL}}/4"
 					},
 					"response": []
 				},
@@ -469,12 +411,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{Base_URL}}",
-							"host": [
-								"{{Base_URL}}"
-							]
-						}
+						"url": "{{Base_URL}}"
 					},
 					"response": []
 				},
@@ -523,16 +460,7 @@
 							"mode": "formdata",
 							"formdata": []
 						},
-						"url": {
-							"raw": "{{Base_URL}}/6/uploadImage",
-							"host": [
-								"{{Base_URL}}"
-							],
-							"path": [
-								"6",
-								"uploadImage"
-							]
-						}
+						"url": "{{Base_URL}}/6/uploadImage"
 					},
 					"response": []
 				},
@@ -591,12 +519,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{Base_URL}}",
-							"host": [
-								"{{Base_URL}}"
-							]
-						}
+						"url": "{{Base_URL}}"
 					},
 					"response": []
 				},
@@ -619,25 +542,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{Base_URL}}/10",
-							"host": [
-								"{{Base_URL}}"
-							],
-							"path": [
-								"10"
-							]
-						}
+						"url": "{{Base_URL}}/10"
 					},
 					"response": []
 				}
@@ -670,15 +581,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{Base_URL}}/1",
-							"host": [
-								"{{Base_URL}}"
-							],
-							"path": [
-								"1"
-							]
-						}
+						"url": "{{Base_URL}}/1"
 					},
 					"response": []
 				},
@@ -788,12 +691,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{Base_URL}}",
-							"host": [
-								"{{Base_URL}}"
-							]
-						}
+						"url": "{{Base_URL}}"
 					},
 					"response": []
 				},
@@ -847,16 +745,7 @@
 							"mode": "formdata",
 							"formdata": []
 						},
-						"url": {
-							"raw": "{{Base_URL}}/5/uploadImage",
-							"host": [
-								"{{Base_URL}}"
-							],
-							"path": [
-								"5",
-								"uploadImage"
-							]
-						}
+						"url": "{{Base_URL}}/5/uploadImage"
 					},
 					"response": []
 				},
@@ -920,12 +809,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{Base_URL}}",
-							"host": [
-								"{{Base_URL}}"
-							]
-						}
+						"url": "{{Base_URL}}"
 					},
 					"response": []
 				},
@@ -953,25 +837,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{Base_URL}}/{{newPetId}}",
-							"host": [
-								"{{Base_URL}}"
-							],
-							"path": [
-								"{{newPetId}}"
-							]
-						}
+						"url": "{{Base_URL}}/{{newPetId}}"
 					},
 					"response": []
 				}
@@ -1007,15 +879,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{Base_URL}}/1",
-							"host": [
-								"{{Base_URL}}"
-							],
-							"path": [
-								"1"
-							]
-						}
+						"url": "{{Base_URL}}/1"
 					},
 					"response": []
 				},
@@ -1116,12 +980,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{Base_URL}}",
-							"host": [
-								"{{Base_URL}}"
-							]
-						}
+						"url": "{{Base_URL}}"
 					},
 					"response": []
 				},
@@ -1169,16 +1028,7 @@
 							"mode": "formdata",
 							"formdata": []
 						},
-						"url": {
-							"raw": "{{Base_URL}}/5/uploadImage",
-							"host": [
-								"{{Base_URL}}"
-							],
-							"path": [
-								"5",
-								"uploadImage"
-							]
-						}
+						"url": "{{Base_URL}}/5/uploadImage"
 					},
 					"response": []
 				},
@@ -1236,12 +1086,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{Base_URL}}",
-							"host": [
-								"{{Base_URL}}"
-							]
-						}
+						"url": "{{Base_URL}}"
 					},
 					"response": []
 				},
@@ -1263,15 +1108,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{Base_URL}}/{{newPetId}}",
-							"host": [
-								"{{Base_URL}}"
-							],
-							"path": [
-								"{{newPetId}}"
-							]
-						}
+						"url": "{{Base_URL}}/{{newPetId}}"
 					},
 					"response": []
 				}
