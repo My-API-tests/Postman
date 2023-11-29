@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2c796025-100a-440e-a64b-386ce3585aab",
+		"_postman_id": "c35264e7-9a33-4044-a4ec-3bb8307db0ef",
 		"name": "Negative tests",
 		"description": "Tests include:\n\n- validate status code\n    \n- validate payloads\n    \n- validate headers\n    \n- performance sanity",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
@@ -39,8 +39,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -51,7 +51,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{Base_URL}}/findByStatus?status=1234",
+							"raw": "{{Base_URL}}/findByStatus?status=invalidStatus",
 							"host": [
 								"{{Base_URL}}"
 							],
@@ -61,7 +61,7 @@
 							"query": [
 								{
 									"key": "status",
-									"value": "1234"
+									"value": "invalidStatus"
 								}
 							]
 						}
@@ -228,9 +228,111 @@
 						"url": "{{Base_URL}}/3/uploadImage"
 					},
 					"response": []
+				},
+				{
+					"name": "Update an existing pet- no request body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 415\", function () {\r",
+									"    pm.response.to.have.status(415);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "{{Base_URL}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update an existing pet",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.body.raw = JSON.stringify({\r",
+									"\r",
+									"    \"id\": \"invalidID\",\r",
+									"  \"category\": {\r",
+									"    \"id\": 0,\r",
+									"    \"name\": \"string\"\r",
+									"  },\r",
+									"  \"name\": \"doggie\",\r",
+									"  \"photoUrls\": [\r",
+									"    \"string\"\r",
+									"  ],\r",
+									"  \"tags\": [\r",
+									"    {\r",
+									"      \"id\": 0,\r",
+									"      \"name\": \"string\"\r",
+									"    }\r",
+									"  ],\r",
+									"  \"status\": \"available\"\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{Base_URL}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a pet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{Base_URL}}/55543676"
+					},
+					"response": []
 				}
 			],
-			"description": "| Test | Test data | **Expected status code** |\n| --- | --- | --- |\n| Find pet by ID | Invalid ID | 404 |\n| Find pets by status | Invalid status | 200 |\n| Add a new pet to the store | No required request body | 415 |\n| Upload an image | Non-existent file | 415 |\n| Upload an image | No **src** property | 415 |\n| Upload an image | No **key** property | 415 |"
+			"description": "| Test | Test data | **Expected status code** |\n| --- | --- | --- |\n| Find pet by ID | Invalid ID | 404 |\n| Find pets by status | Invalid status | 404 |\n| Add a new pet to the store | No required request body | 415 |\n| Upload an image | Non-existent file | 415 |\n| Upload an image | No **src** property | 415 |\n| Upload an image | No **key** property | 415 |\n| Update an existing pet | No digits in the ID | 400 |\n| Update an existing pet | No required request body | 415 |\n| Delete a pet | Invalid ID | 404 |"
 		}
 	]
 }
