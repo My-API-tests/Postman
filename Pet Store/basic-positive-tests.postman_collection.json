@@ -1,0 +1,456 @@
+{
+	"info": {
+		"_postman_id": "464737ae-b9c0-4492-a53e-4590acf59c60",
+		"name": "Basic positive tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26481818"
+	},
+	"item": [
+		{
+			"name": "Find pet by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Validate status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Validate JSON schema\r",
+							"pm.test(\"Validate JSON schema\", () => {\r",
+							"    pm.expect(pm.response).to.have.jsonSchema(pm.iterationData.get(\"findByIdSchema\"));\r",
+							"});\r",
+							"\r",
+							"//Validate headers\r",
+							"const headers = pm.iterationData.get('headers');\r",
+							"\r",
+							"for(const header of headers) {\r",
+							"    pm.test('\"' + header + '\" header is present', () => {\r",
+							"        pm.response.to.have.header(header);\r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"//Validate response time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base_URL}}/1",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find pets by status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Validate status code\r",
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"//Validate JSON schema\r",
+							"pm.test('Validate JSON schema', () => {\r",
+							"    pm.expect(pm.response).to.have.jsonSchema(pm.iterationData.get(\"findByStatusSchema\"));\r",
+							"})\r",
+							"\r",
+							"//Validate headers\r",
+							"const headers = pm.iterationData.get('headers');\r",
+							"\r",
+							"for(const header of headers) {\r",
+							"\r",
+							"    pm.test('\"' + header + '\" header is present', () => {\r",
+							"        pm.expect(pm.response).to.have.header(header);\r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"//Validate response time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base_URL}}/findByStatus?status=pending",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"findByStatus"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "pending"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a new pet to the store",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Validate status code\r",
+							"pm.test(\"Status code is 200\", function() {\r",
+							"\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"//Validate JSON schema\r",
+							"pm.test('Validate JSON schema', () => {\r",
+							"    pm.expect(pm.response).to.have.jsonSchema(pm.iterationData.get(\"addNewPetSchema\"));\r",
+							"})\r",
+							"\r",
+							"//Validate headers\r",
+							"const headers = pm.iterationData.get('headers');\r",
+							"\r",
+							"for(const header of headers) {\r",
+							"\r",
+							"    pm.test('\"' + header + '\" header is present', () => {\r",
+							"        pm.response.to.have.header(header);\r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"//Validate response time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const requestBody = pm.iterationData.get('newPet');\r",
+							"\r",
+							"pm.request.body.raw = JSON.stringify(requestBody);\r",
+							"pm.environment.set('newPetId', requestBody.id);\r",
+							"pm.environment.set('newPetName', requestBody.name);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_URL}}",
+					"host": [
+						"{{Base_URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get created pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test('Pet ID equals to \"' + pm.environment.get('newPetId') + '\"', () => {\r",
+							"    pm.expect(jsonData.id).to.equal(pm.environment.get('newPetId'));\r",
+							"})\r",
+							"\r",
+							"pm.test('Pet name equals to \"' + pm.environment.get('newPetName') + '\"', () => {\r",
+							"    pm.expect(jsonData.name).to.equals(pm.environment.get('newPetName'));\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base_URL}}/{{newPetId}}",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"{{newPetId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an existing pet",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.request.body.raw = JSON.stringify({\r",
+							"\r",
+							"    \"id\": 0,\r",
+							"  \"category\": {\r",
+							"    \"id\": 0,\r",
+							"    \"name\": \"string\"\r",
+							"  },\r",
+							"  \"name\": \"doggie\",\r",
+							"  \"photoUrls\": [\r",
+							"    \"string\"\r",
+							"  ],\r",
+							"  \"tags\": [\r",
+							"    {\r",
+							"      \"id\": 0,\r",
+							"      \"name\": \"string\"\r",
+							"    }\r",
+							"  ],\r",
+							"  \"status\": \"available\"\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Validate status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Validate JSON schema\r",
+							"pm.test('Validate JSON schema', () => {\r",
+							"\r",
+							"    pm.expect(pm.response).to.have.jsonSchema(pm.iterationData.get(\"updateExistingPetSchema\"));\r",
+							"})\r",
+							"\r",
+							"//Validate headers\r",
+							"const headers = pm.iterationData.get('headers');\r",
+							"\r",
+							"for(const header of headers) {\r",
+							"\r",
+							"    pm.test('\"' + header + ' header is present', () => {\r",
+							"        pm.response.to.have.header(header);\r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"//Validate reposnse time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_URL}}",
+					"host": [
+						"{{Base_URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload an image",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Validate status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Validate JSON schema\r",
+							"pm.test('Validate JSON schema', () => {\r",
+							"\r",
+							"    pm.expect(pm.response).to.have.jsonSchema(pm.iterationData.get(\"uploadImageSchema\"));\r",
+							"})\r",
+							"\r",
+							"//Validate headers\r",
+							"const headers = pm.iterationData.get('headers');\r",
+							"\r",
+							"for(const header of headers) {\r",
+							"\r",
+							"    pm.test('\"' + header + '\" header is present', () => {\r",
+							"        pm.response.to.have.header(header);\r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"//Validate response time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"/*pm.request.body.formdata = [\r",
+							"\r",
+							"    {\r",
+							"        key: \"additionalMetadata\",\r",
+							"        value: \"My pet image\",\r",
+							"        type: \"text\"\r",
+							"    },\r",
+							"\r",
+							"    {\r",
+							"        key: \"file\",\r",
+							"        src: \"C:/Users/48608/Postman/files/pet.png\",\r",
+							"        type: \"file\"\r",
+							"    }\r",
+							"]*/\r",
+							"\r",
+							"pm.request.body.formdata = pm.iterationData.get('uploadAnImageFormdata');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{Base_URL}}/3/uploadImage",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"3",
+						"uploadImage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Validate status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Validate JSON schema\r",
+							"pm.test('Validate JSON schema', () => {\r",
+							"\r",
+							"    pm.expect(pm.response).to.have.jsonSchema(pm.iterationData.get(\"deletePetSchema\"));\r",
+							"});\r",
+							"\r",
+							"//Validate headers\r",
+							"const headers = pm.iterationData.get('headers');\r",
+							"\r",
+							"for(const header of headers) {\r",
+							"\r",
+							"    pm.test('\"' + header + '\" header is present', () => {\r",
+							"        pm.response.to.have.header(header);\r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"//Validate response time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{Base_URL}}/{{newPetId}}",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"{{newPetId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
