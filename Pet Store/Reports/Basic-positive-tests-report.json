@@ -1,0 +1,503 @@
+{
+	"id": "c977af2a-7470-48be-9222-4638d2a7f10c",
+	"name": "Basic positive tests",
+	"timestamp": "2024-02-15T23:09:45.110Z",
+	"collection_id": "26481818-464737ae-b9c0-4492-a53e-4590acf59c60",
+	"folder_id": 0,
+	"environment_id": "26481818-58fd27b8-fad8-43b4-8926-4ce831d53428",
+	"totalPass": 37,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-02-15T23:09:43.418Z",
+	"totalFail": 20,
+	"results": [
+		{
+			"id": "0e0c2a19-953d-4f3d-836f-0db969b53f73",
+			"name": "Find pet by ID",
+			"url": "https://petstore.swagger.io/v2/pet/1",
+			"time": 121,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate JSON schema": true,
+				"\"Content-Type\" header is present": true,
+				"\"Connection\" header is present": true,
+				"\"Cache-Control\" header is present": false,
+				"\"Expires\" header is present": false,
+				"\"X-Powered-By\" header is present": false,
+				"Response time is less than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate JSON schema": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Content-Type\" header is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Connection\" header is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Cache-Control\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"\"Expires\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"\"X-Powered-By\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				121
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate JSON schema": true,
+					"\"Content-Type\" header is present": true,
+					"\"Connection\" header is present": true,
+					"\"Cache-Control\" header is present": false,
+					"\"Expires\" header is present": false,
+					"\"X-Powered-By\" header is present": false,
+					"Response time is less than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "10eb0195-d5e1-46a1-851b-78e59637d95c",
+			"name": "Find pets by status",
+			"url": "https://petstore.swagger.io/v2/pet/findByStatus?status=pending",
+			"time": 238,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate JSON schema": true,
+				"\"Content-Type\" header is present": true,
+				"\"Connection\" header is present": true,
+				"\"Cache-Control\" header is present": false,
+				"\"Expires\" header is present": false,
+				"\"X-Powered-By\" header is present": false,
+				"Response time is less than 200ms": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate JSON schema": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Content-Type\" header is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Connection\" header is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Cache-Control\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"\"Expires\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"\"X-Powered-By\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response time is less than 200ms": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				238
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate JSON schema": true,
+					"\"Content-Type\" header is present": true,
+					"\"Connection\" header is present": true,
+					"\"Cache-Control\" header is present": false,
+					"\"Expires\" header is present": false,
+					"\"X-Powered-By\" header is present": false,
+					"Response time is less than 200ms": false
+				}
+			]
+		},
+		{
+			"id": "b319099a-f122-430f-852a-377541b3d19f",
+			"name": "Add a new pet to the store",
+			"url": "https://petstore.swagger.io/v2/pet",
+			"time": 123,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate JSON schema": true,
+				"\"Content-Type\" header is present": true,
+				"\"Connection\" header is present": true,
+				"\"Cache-Control\" header is present": false,
+				"\"Expires\" header is present": false,
+				"\"X-Powered-By\" header is present": false,
+				"Response time is less than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate JSON schema": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Content-Type\" header is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Connection\" header is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Cache-Control\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"\"Expires\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"\"X-Powered-By\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				123
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate JSON schema": true,
+					"\"Content-Type\" header is present": true,
+					"\"Connection\" header is present": true,
+					"\"Cache-Control\" header is present": false,
+					"\"Expires\" header is present": false,
+					"\"X-Powered-By\" header is present": false,
+					"Response time is less than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "0f8de8aa-d83e-4dfc-9d68-547e55825980",
+			"name": "Get created pet",
+			"url": "https://petstore.swagger.io/v2/pet/500",
+			"time": 119,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Pet ID equals to \"500\"": true,
+				"Pet name equals to \"Dingo\"": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Pet ID equals to \"500\"": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Pet name equals to \"Dingo\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				119
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Pet ID equals to \"500\"": true,
+					"Pet name equals to \"Dingo\"": true
+				}
+			]
+		},
+		{
+			"id": "34029c8e-c343-491e-b9f3-204d437f1f34",
+			"name": "Update an existing pet",
+			"url": "https://petstore.swagger.io/v2/pet",
+			"time": 121,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate JSON schema": true,
+				"\"Content-Type header is present": true,
+				"\"Connection header is present": true,
+				"\"Cache-Control header is present": false,
+				"\"Expires header is present": false,
+				"\"X-Powered-By header is present": false,
+				"Response time is less than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate JSON schema": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Content-Type header is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Connection header is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Cache-Control header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"\"Expires header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"\"X-Powered-By header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				121
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate JSON schema": true,
+					"\"Content-Type header is present": true,
+					"\"Connection header is present": true,
+					"\"Cache-Control header is present": false,
+					"\"Expires header is present": false,
+					"\"X-Powered-By header is present": false,
+					"Response time is less than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "8d03330d-1a70-4c3c-bdb3-05e06e5162ed",
+			"name": "Upload an image",
+			"url": "https://petstore.swagger.io/v2/pet/3/uploadImage",
+			"time": 122,
+			"responseCode": {
+				"code": 415,
+				"name": "Unsupported Media Type"
+			},
+			"tests": {
+				"Status code is 200": false,
+				"Validate JSON schema": true,
+				"\"Content-Type\" header is present": true,
+				"\"Connection\" header is present": true,
+				"\"Cache-Control\" header is present": false,
+				"\"Expires\" header is present": false,
+				"\"X-Powered-By\" header is present": false,
+				"Response time is less than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate JSON schema": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Content-Type\" header is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Connection\" header is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Cache-Control\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"\"Expires\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"\"X-Powered-By\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				122
+			],
+			"allTests": [
+				{
+					"Status code is 200": false,
+					"Validate JSON schema": true,
+					"\"Content-Type\" header is present": true,
+					"\"Connection\" header is present": true,
+					"\"Cache-Control\" header is present": false,
+					"\"Expires\" header is present": false,
+					"\"X-Powered-By\" header is present": false,
+					"Response time is less than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "aa80eabc-783b-4ca1-b7f6-9135e3be1436",
+			"name": "Delete a pet",
+			"url": "https://petstore.swagger.io/v2/pet/500",
+			"time": 119,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate JSON schema": true,
+				"\"Content-Type\" header is present": true,
+				"\"Connection\" header is present": true,
+				"\"Cache-Control\" header is present": false,
+				"\"Expires\" header is present": false,
+				"\"X-Powered-By\" header is present": false,
+				"Response time is less than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate JSON schema": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Content-Type\" header is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Connection\" header is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"\"Cache-Control\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"\"Expires\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"\"X-Powered-By\" header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				119
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate JSON schema": true,
+					"\"Content-Type\" header is present": true,
+					"\"Connection\" header is present": true,
+					"\"Cache-Control\" header is present": false,
+					"\"Expires\" header is present": false,
+					"\"X-Powered-By\" header is present": false,
+					"Response time is less than 200ms": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 963,
+	"collection": {
+		"requests": [
+			{
+				"id": "0e0c2a19-953d-4f3d-836f-0db969b53f73",
+				"method": "GET"
+			},
+			{
+				"id": "10eb0195-d5e1-46a1-851b-78e59637d95c",
+				"method": "GET"
+			},
+			{
+				"id": "b319099a-f122-430f-852a-377541b3d19f",
+				"method": "POST"
+			},
+			{
+				"id": "0f8de8aa-d83e-4dfc-9d68-547e55825980",
+				"method": "GET"
+			},
+			{
+				"id": "34029c8e-c343-491e-b9f3-204d437f1f34",
+				"method": "PUT"
+			},
+			{
+				"id": "8d03330d-1a70-4c3c-bdb3-05e06e5162ed",
+				"method": "POST"
+			},
+			{
+				"id": "aa80eabc-783b-4ca1-b7f6-9135e3be1436",
+				"method": "DELETE"
+			}
+		]
+	}
+}
