@@ -147,175 +147,64 @@
             }]
         },
 
-        "findByStatusSchema": {
-            "$id": "http://example.com/example.json",
-            "type": "array",
-            "default": [],
-            "title": "Root Schema",
-            "items": {
-                "type": "object",
-                "default": {},
-                "title": "A Schema",
-                "required": [
-                    "id",
-                    "category",
-                    "name",
-                    "photoUrls",
-                    "tags",
-                    "status"
-                ],
-                "properties": {
-                    "id": {
-                        "type": "integer",
-                        "default": 0,
-                        "title": "The id Schema",
-                        "examples": [
-                            0
-                        ]
-                    },
-                    "category": {
-                        "type": "object",
-                        "default": {},
-                        "title": "The category Schema",
-                        "required": [
-                            "id",
-                            "name"
-                        ],
-                        "properties": {
-                            "id": {
-                                "type": "integer",
-                                "default": 0,
-                                "title": "The id Schema",
-                                "examples": [
-                                    0
-                                ]
-                            },
-                            "name": {
-                                "type": "string",
-                                "default": "",
-                                "title": "The name Schema",
-                                "examples": [
-                                    "string"
-                                ]
-                            }
-                        },
-                        "examples": [{
-                            "id": 0,
-                            "name": "string"
-                        }]
-                    },
-                    "name": {
-                        "type": "string",
-                        "default": "",
-                        "title": "The name Schema",
-                        "examples": [
-                            "doggie"
-                        ]
-                    },
-                    "photoUrls": {
-                        "type": "array",
-                        "default": [],
-                        "title": "The photoUrls Schema",
-                        "items": {
-                            "type": "string",
-                            "default": "",
-                            "title": "A Schema",
-                            "examples": [
-                                "string"
-                            ]
-                        },
-                        "examples": [
-                            [
-                                "string"]
-                        ]
-                    },
-                    "tags": {
-                        "type": "array",
-                        "default": [],
-                        "title": "The tags Schema",
-                        "items": {
-                            "type": "object",
-                            "default": {},
-                            "title": "A Schema",
-                            "required": [
-                                "id",
-                                "name"
-                            ],
-                            "properties": {
-                                "id": {
-                                    "type": "integer",
-                                    "default": 0,
-                                    "title": "The id Schema",
-                                    "examples": [
-                                        0
-                                    ]
-                                },
-                                "name": {
-                                    "type": "string",
-                                    "default": "",
-                                    "title": "The name Schema",
-                                    "examples": [
-                                        "string"
-                                    ]
-                                }
-                            },
-                            "examples": [{
-                                "id": 0,
-                                "name": "string"
-                            }]
-                        },
-                        "examples": [
-                            [{
-                                "id": 0,
-                                "name": "string"
-                            }]
-                        ]
-                    },
-                    "status": {
-                        "type": "string",
-                        "default": "",
-                        "title": "The status Schema",
-                        "examples": [
-                            "available"
-                        ]
-                    }
-                },
-                "examples": [{
-                    "id": 0,
-                    "category": {
-                        "id": 0,
-                        "name": "string"
-                    },
-                    "name": "doggie",
-                    "photoUrls": [
-                        "string"
-                    ],
-                    "tags": [{
-                        "id": 0,
-                        "name": "string"
-                    }],
-                    "status": "available"
-                }]
+        "findByIdNotFoundSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "title": "Generated schema for Root",
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "number"
+              },
+              "type": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              }
             },
-            "examples": [
-                [{
-                    "id": 0,
-                    "category": {
-                        "id": 0,
-                        "name": "string"
-                    },
-                    "name": "doggie",
-                    "photoUrls": [
-                        "string"
-                    ],
-                    "tags": [{
-                        "id": 0,
-                        "name": "string"
-                    }],
-                    "status": "available"
-                }]
+            "required": [
+              "code",
+              "type",
+              "message"
             ]
-        },
+          }, 
+
+        "findByStatusSchema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "title": "Generated schema for Root",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "photoUrls": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {}
+                },
+                "status": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "photoUrls",
+                "tags",
+                "status"
+              ]
+            }
+          },
 
         "addNewPetSchema": {
             "$id": "http://example.com/example.json",
@@ -695,6 +584,65 @@
             "Expires",
             "Content-Type",
             "X-Powered-By"
+        ],
+
+        "newPet": {
+
+            "id": 500,
+            
+            "category": {
+                "id": 2,
+                "name": "string"
+            },
+        
+            "name": "Dingo",
+            "photoURLs": [
+                "string"
+            ],
+        
+            "tags": [
+                {
+                    "id": 10,
+                    "name": "string"
+                }
+            ],
+        
+            "status": "pending"
+        },
+
+        "updateExistingPet": {
+
+            "id": 0,
+          "category": {
+            "id": 0,
+            "name": "string"
+          },
+          "name": "doggie",
+          "photoUrls": [
+            "string"
+          ],
+          "tags": [
+            {
+              "id": 0,
+              "name": "string"
+            }
+          ],
+          "status": "available"
+        },
+
+        "uploadAnImageFormData": [
+
+            {
+                "key": "additionalMetadata",
+                "value": "My pet image",
+                "type": "text"
+            },
+        
+            {
+                "key": "file",
+                "src": "C:/Users/48608/Postman/files/pet.png",
+                "type": "file"
+            }
         ],
 
         "newPetWithoutRequiredParams": {
